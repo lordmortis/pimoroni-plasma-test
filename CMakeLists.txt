@@ -3,7 +3,13 @@ cmake_minimum_required(VERSION 3.12)
 # Change your executable name to something creative!
 set(NAME ledcontroller) # <-- Name your project/executable here!
 
-set(PICO_SDK_PATH "/Users/lordmortis/Projects/pico/pico-sdk")
+if (DEFINED ENV{PICO_SDK_PATH} AND (NOT PICO_SDK_PATH))
+    set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
+    message("Using PICO_SDK_PATH from environment ('${PICO_SDK_PATH}')")
+endif ()
+
+
+#set(PICO_SDK_PATH "/Users/lordmortis/Projects/pico/pico-sdk")
 
 include(pimoroni_pico_import.cmake)
 include(pico_sdk_import.cmake)
